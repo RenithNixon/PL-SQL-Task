@@ -1,0 +1,12 @@
+declare
+min_cnt number:=5;
+max_cnt number:=10;
+fact number:=1;
+begin
+for a in min_cnt..max_cnt
+loop
+fact:=fact*a;
+dbms_output.put_line('Factorial of ' || a ||' is ' ||fact);
+end loop;
+end;
+/

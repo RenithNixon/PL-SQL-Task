@@ -1,0 +1,16 @@
+declare
+n number:=6;
+fib1 number:=0;
+fib2 number:=1;
+series number:=0;
+begin
+dbms_output.put_line(fib1);
+dbms_output.put_line(fib2);
+for a in 1..n loop
+series:=fib1+fib2;
+fib1:=fib2;
+fib2:=series;
+dbms_output.put_line(series);
+end loop;
+end;
+/

@@ -1,0 +1,19 @@
+declare
+min_cnt number:=1;
+max_cnt number:=20;
+status number:=0;
+begin
+for i in min_cnt..max_cnt loop
+for j in 2..i/2 loop
+if mod(i,j)=0 then
+status:=1;
+exit;
+end if;
+end loop;
+if status=0 then
+dbms_output.put_line(i);
+end if;
+status:=0;
+end loop;
+end;
+/

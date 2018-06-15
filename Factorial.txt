@@ -1,0 +1,11 @@
+declare
+limit number:=5;
+fact number:=1;
+begin
+for a in 1..limit
+loop
+fact:=fact*a;
+dbms_output.put_line('Factorial of ' || a ||' is ' ||fact);
+end loop;
+end;
+/

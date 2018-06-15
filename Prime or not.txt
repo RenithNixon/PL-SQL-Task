@@ -1,0 +1,17 @@
+declare
+n number:=19;
+flag boolean:=false;
+begin
+for a in 2..n/2 loop
+if mod(n,a)=0 then
+flag:=true;
+exit;
+end if;
+end loop;
+if flag then
+dbms_output.put_line(n || ' is not a Prime number');
+else
+dbms_output.put_line(n || ' is a Prime number');
+end if;
+end;
+/

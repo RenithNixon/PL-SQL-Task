@@ -1,0 +1,18 @@
+declare
+n number:=371;
+rem number;
+total number:=0;
+temp number:=n;
+begin
+while n>0 loop
+rem:=mod(n,10);
+total:=total+(rem*rem*rem);
+n:=trunc(n/10);
+end loop;
+if (total=temp) then
+dbms_output.put_line(temp || ' is an Armstrong number');
+else
+dbms_output.put_line(temp || ' is not an Armstrong number');
+end if;
+end;
+/
