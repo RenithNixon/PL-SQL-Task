@@ -6,7 +6,7 @@ temp number:=n;
 begin
 while n>0 loop
 rem:=mod(n,10);
-total:=total+(rem*rem*rem);
+total:=total+power(rem,3);
 n:=trunc(n/10);
 end loop;
 if (total=temp) then
