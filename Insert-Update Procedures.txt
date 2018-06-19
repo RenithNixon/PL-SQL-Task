@@ -1,0 +1,23 @@
+create or replace procedure insert_user(name varchar2,cntct_no number,address varchar2) as
+begin
+insert into user_details values(user_id_seq.nextval,name,cntct_no,address);
+end;
+/
+
+create or replace procedure insert_product(prod_name varchar2,product_cnt number,category_id number,supplier_id number,price number) as
+begin
+insert into product values(product_id_seq.nextval,prod_name,product_cnt,category_id,supplier_id,price);
+end;
+/
+
+create or replace procedure insert_category(category_name varchar2) as
+begin
+insert into category values(category_id_seq.nextval,category_name);
+end;
+/
+
+create or replace procedure insert_supplier(supplier_name varchar2,city varchar2,cntct_no number) as
+begin
+insert into supplier values(category_id_seq.nextval,supplier_name,city,cntct_no);
+end;
+/
