@@ -23,13 +23,14 @@ supplier_contact number,
 create table product(
 product_id number not null ,
 product_name varchar2(100),
-product count number,
+product_count number,
 category_id number,
 supplier_id number,
 primary key (product_id)
 )
 alter table product add constraint fk_category_id foreign key (category_id) references category (category_id);
 alter table product add constraint fk_supplier_id foreign key (supplier_id) references supplier (supplier_id);
+alter table product add product_price number(15,2);
 
 create table cart(
 cart_id number not null,
@@ -39,6 +40,8 @@ primary key (cart_id)
 )
 alter table cart add constraint fk_user_id foreign key (user_id) references user_details (user_id);
 alter table cart add constraint fk_product_id foreign key (product_id) references product (product_id);
+alter table add product_qty number;
+alter table add total_amount number(15,2);
 
 create table orders_status(
 order_id number not null,
@@ -61,3 +64,34 @@ action_flag	varchar2(10),
 cart_id		number
 ) 
 alter table supplier_action add constraint fk2_cart_id foreign key (cart_id) references cart (cart_id);
+
+create table order_return(
+order_return_id	number,
+cart_id		number,
+primary key (order_return_id)
+)
+alter table order_return add constraint fk3_cart_id foreign key (cart_id) references cart (cart_id);
+
+create table supplier_approval(
+supplier_appr_id number,
+order_return_id number,
+supp_appr_status varchar2(100),
+primary key (supplier_appr_id)
+)
+alter table supplier_approval add constraint fk3_order_return_id foreign key (order_return_id) references order_return (order_return_id);
+
+create table organizational_appr(
+org_appr_id number,
+org_appr_status varchar2(50),
+supplier_appr_id number,
+primary key(org_appr_id)
+)
+alter table organizational_appr add constraint fk_supplier_appr_id foreign key (supplier_appr_id) references supplier_approval (supplier_appr_id);
+
+create table user_money(
+user_money_id	number,
+user_id		number,
+amount		number,
+primary key(user_money_id)
+)
+alter table user_money add constraint fk1_user_id foreign key (user_id) references user_details (user_id);
